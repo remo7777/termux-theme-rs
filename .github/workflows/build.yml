@@ -39,13 +39,13 @@ jobs:
 
       - name: Build Target Binary
         run: |
-          NDK_PATH=$(ls -d /usr/local/lib/android/sdk/ndk/26* 2>/dev/null | tail -n 1)
-          if [ -z "$NDK_PATH" ]; then
-            NDK_PATH="${ANDROID_NDK_ROOT:-$(ls -d /usr/local/lib/android/sdk/ndk/* 2>/dev/null | tail -n 1)}"
+          if [ -d "/usr/local/lib/android/sdk/ndk-bundle" ]; then
+            export ANDROID_NDK_HOME="/usr/local/lib/android/sdk/ndk-bundle"
+          elif [ -n "$ANDROID_NDK_ROOT" ]; then
+            export ANDROID_NDK_HOME="$ANDROID_NDK_ROOT"
           fi
-          export ANDROID_NDK_HOME="$NDK_PATH"
           echo "Using ANDROID_NDK_HOME=$ANDROID_NDK_HOME"
-          cargo ndk -t ${{ matrix.target }} -p 24 build --release
+          cargo ndk -t ${{ matrix.target }} -p 24 -- build --release
 
       - name: Prepare Output Binary
         run: |
