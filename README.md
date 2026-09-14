@@ -18,20 +18,21 @@ Developed by **Termux Tyro (@Remo773)**.
 
 ## 🚀 Quick Start & Installation
 
-### Option 1: Using Pre-compiled Binaries
-Copy the binary for your architecture from the `builds/` directory to your local bin path:
+### Option 1: Download Pre-compiled Binary (Releases)
+Download the latest binary for your architecture from [GitHub Releases](https://github.com/remo7777/termux-theme-rs/releases/latest):
 
 ```bash
-# For aarch64 (64-bit ARM mobile devices)
-cp builds/termux-theme-rust-aarch64 ~/.local/bin/termux-theme
-chmod +x ~/.local/bin/termux-theme
+# Example for aarch64 (64-bit ARM mobile devices)
+curl -LO https://github.com/remo7777/termux-theme-rs/releases/latest/download/termux-theme-rust-aarch64
+chmod +x termux-theme-rust-aarch64
+mv termux-theme-rust-aarch64 ~/.local/bin/termux-theme
 ```
 
 ### Option 2: Build from Source
 Ensure you have Rust installed on Termux (`pkg install rust`), then run:
 
 ```bash
-git clone https://github.com/Remo773/termux-theme-rs.git
+git clone https://github.com/remo7777/termux-theme-rs.git
 cd termux-theme-rs
 cargo build --release
 cp target/release/termux-theme ~/.local/bin/
