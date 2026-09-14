@@ -1,3 +1,5 @@
 /target
 /.ccls-cache
 *.bak
+/builds
+
