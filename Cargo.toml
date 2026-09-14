@@ -2,5 +2,8 @@
 name = "termux-theme"
 version = "0.1.2"
 edition = "2024"
+authors = ["Termux Tyro (@Remo773)"]
+license = "MIT"
+
 
 [dependencies]

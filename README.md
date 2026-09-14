@@ -113,3 +113,10 @@ This project includes GitHub Actions for automated cross-compilation targeting:
 ## 👤 Author
 
 - **Termux Tyro (@Remo773)**
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
