@@ -38,7 +38,8 @@ jobs:
 
       - name: Build Target Binary
         run: |
-          export ANDROID_NDK_HOME="$ANDROID_NDK_ROOT"
+          export ANDROID_NDK_HOME="${ANDROID_NDK_ROOT:-$(ls -d /usr/local/lib/android/sdk/ndk/* 2>/dev/null | tail -n 1)}"
+          echo "Using ANDROID_NDK_HOME=$ANDROID_NDK_HOME"
           cargo ndk --target ${{ matrix.target }} --platform 24 build --release
 
       - name: Prepare Output Binary
