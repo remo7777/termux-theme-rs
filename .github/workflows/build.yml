@@ -37,8 +37,10 @@ jobs:
         run: cargo install cargo-ndk
 
       - name: Build Target Binary
+        env:
+          ANDROID_NDK_HOME: ${{ env.ANDROID_NDK_LATEST_HOME }}
         run: |
-          cargo ndk --target ${{ matrix.target }} build --release
+          cargo ndk --target ${{ matrix.target }} --platform 24 build --release
 
       - name: Prepare Output Binary
         run: |
