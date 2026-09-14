@@ -13,6 +13,7 @@ jobs:
     name: Build Android Binaries
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
           - target: aarch64-linux-android
@@ -38,9 +39,13 @@ jobs:
 
       - name: Build Target Binary
         run: |
-          export ANDROID_NDK_HOME="${ANDROID_NDK_ROOT:-$(ls -d /usr/local/lib/android/sdk/ndk/* 2>/dev/null | tail -n 1)}"
+          NDK_PATH=$(ls -d /usr/local/lib/android/sdk/ndk/26* 2>/dev/null | tail -n 1)
+          if [ -z "$NDK_PATH" ]; then
+            NDK_PATH="${ANDROID_NDK_ROOT:-$(ls -d /usr/local/lib/android/sdk/ndk/* 2>/dev/null | tail -n 1)}"
+          fi
+          export ANDROID_NDK_HOME="$NDK_PATH"
           echo "Using ANDROID_NDK_HOME=$ANDROID_NDK_HOME"
-          cargo ndk --target ${{ matrix.target }} --platform 24 build --release
+          cargo ndk -t ${{ matrix.target }} -p 24 build --release
 
       - name: Prepare Output Binary
         run: |
