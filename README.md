@@ -18,8 +18,15 @@ Developed by **Termux Tyro (@Remo773)**.
 
 ## 🚀 Quick Start & Installation
 
-### Option 1: Download Pre-compiled Binary (Releases)
-Download the latest binary for your architecture from [GitHub Releases](https://github.com/remo7777/termux-theme-rs/releases/latest):
+### Option 1: Automatic One-Liner Install (Auto-detect Architecture & Version)
+Run this single command to automatically detect your architecture (`aarch64`, `armv7`, `x86_64`, `i686`) and download the latest release:
+
+```bash
+ARCH=$(case $(dpkg --print-architecture 2>/dev/null || uname -m) in aarch64) echo aarch64;; arm*) echo armv7;; x86_64) echo x86_64;; i*86) echo i686;; esac) && VERSION=$(curl -s https://api.github.com/repos/remo7777/termux-theme-rs/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') && curl -sSL "https://github.com/remo7777/termux-theme-rs/releases/download/${VERSION}/termux-theme-rust-${ARCH}" -o ~/.local/bin/termux-theme && chmod +x ~/.local/bin/termux-theme
+```
+
+### Option 2: Manual Download (Releases)
+Download the latest binary directly for your architecture from [GitHub Releases](https://github.com/remo7777/termux-theme-rs/releases/latest):
 
 ```bash
 # Example for aarch64 (64-bit ARM mobile devices)
