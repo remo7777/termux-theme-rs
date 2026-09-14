@@ -36,11 +36,6 @@ jobs:
       - name: Install cargo-ndk
         run: cargo install cargo-ndk
 
-      - name: Setup Android NDK
-        uses: nsetup/setup-ndk@v1
-        with:
-          ndk-version: r26b
-
       - name: Build Target Binary
         run: |
           cargo ndk --target ${{ matrix.target }} build --release
