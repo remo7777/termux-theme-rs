@@ -28,15 +28,32 @@ chmod +x termux-theme-rust-aarch64
 mv termux-theme-rust-aarch64 ~/.local/bin/termux-theme
 ```
 
-### Option 2: Build from Source
-Ensure you have Rust installed on Termux (`pkg install rust`), then run:
+### Option 2: Build from Source on Termux
 
+#### Prerequisites
+Install Rust, C compiler (`clang`), and `fzf` on Termux:
 ```bash
-git clone https://github.com/remo7777/termux-theme-rs.git
-cd termux-theme-rs
-cargo build --release
-cp target/release/termux-theme ~/.local/bin/
+pkg update && pkg install rust clang fzf -y
 ```
+
+#### Build & Install
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/remo7777/termux-theme-rs.git
+   cd termux-theme-rs
+   ```
+
+2. Build optimized release binary (no extra `.cargo` config needed):
+   ```bash
+   cargo build --release
+   ```
+
+3. Copy the compiled binary to your PATH:
+   ```bash
+   mkdir -p ~/.local/bin
+   cp target/release/termux-theme ~/.local/bin/
+   chmod +x ~/.local/bin/termux-theme
+   ```
 
 ---
 
