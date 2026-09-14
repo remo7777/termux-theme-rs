@@ -31,9 +31,9 @@ mv termux-theme-rust-aarch64 ~/.local/bin/termux-theme
 ### Option 2: Build from Source on Termux
 
 #### Prerequisites
-Install Rust, C compiler (`clang`), and `fzf` on Termux:
+Install Rust, C compiler (`clang`), `fzf`, and `gum` on Termux:
 ```bash
-pkg update && pkg install rust clang fzf -y
+pkg update && pkg install rust clang fzf gum -y
 ```
 
 #### Build & Install
