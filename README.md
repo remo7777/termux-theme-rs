@@ -1,4 +1,4 @@
-# 󰏘 termux-theme (v0.1.2)
+# 🫟 termux-theme (v0.1.2)
 
 Fast, dynamic, and live-previewing color theme switcher for **Termux** written in **Rust**.
 
